@@ -13,7 +13,8 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.post("/hook", (req: Request, res: Response) => {
-  if (req.body.action === "opened" && req.body.pull_request !== undefined)
+  if (req.body.action === "opened" && req.body.pull_request !== undefined) {
+    console.log(req.body); // Call your action on the request here
     // Forward to webhook
     fetch(webhook, {
       method: "POST",
@@ -22,6 +23,7 @@ app.post("/hook", (req: Request, res: Response) => {
         "Content-type": "application/json",
       },
     });
+  }
   res.status(200).end();
 });
 
