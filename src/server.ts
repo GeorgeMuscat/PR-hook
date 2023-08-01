@@ -1,9 +1,10 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express, Request, Response, json } from 'express';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
 const app: Express = express();
+app.use(json());
 const port = process.env.PORT;
 const host = process.env.HOST;
 app.get('/', (req: Request, res: Response) => {
